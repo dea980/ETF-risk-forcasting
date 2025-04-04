@@ -1,0 +1,47 @@
+
+---
+
+## 🧭 2. 시스템 설계도 (`system_diagram.drawio` 설명용)
+
+**📌 구성요소**  
+- S3 → Spark on K8s → SageMaker HPO/NAS → Model Registry  
+- Kubernetes CronJob → PostgreSQL 저장  
+- GPT-RAG → ElasticSearch 인덱싱 → Streamlit UI
+
+**제공 포맷**: draw.io 파일 or PNG 이미지 생성 가능 (필요 시 바로 생성해 줄게)
+
+---
+
+## 🗃️ 3. ERD 이미지 설계 (초기 ERD 설계)
+
+```plaintext
+📄 PredictionResult
+- id (PK)
+- etf_code
+- model_name
+- predict_date
+- predicted_return
+- actual_return
+- rmse
+
+📄 ChatLog
+- id (PK)
+- user_id
+- question
+- answer
+- retrieved_docs (json)
+- created_at
+
+📄 FinancialReport
+- id (PK)
+- title
+- source
+- published_at
+- content
+- embedding (vector)
+
+📄 ModelConfig
+- id (PK)
+- model_name
+- params (json)
+- created_at
