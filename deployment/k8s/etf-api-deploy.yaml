@@ -1,0 +1,33 @@
+# k8s/etf-api-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etf-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etf-api
+  template:
+    metadata:
+      labels:
+        app: etf-api
+    spec:
+      containers:
+      - name: etf-api
+        image: my-docker.io/etf-api:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: etf-api-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: etf-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

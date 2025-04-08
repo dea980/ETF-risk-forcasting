@@ -1,0 +1,13 @@
+## data
+data/raw/*
+data/processed/*
+data/trained/*
+data/*
+data/technical_indicator/*
+
+
+## logs
+logs/*
+
+# db
+db/*
