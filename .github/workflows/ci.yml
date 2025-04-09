@@ -24,4 +24,8 @@ jobs:
           pytest tests/
         else
           echo "No tests directory found. Skipping tests."
-        
+        fi
+    # - name: Run Streamlit app
+    #   run: |
+    #     streamlit run streamlit_app/app.py
+    
