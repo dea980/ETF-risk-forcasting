@@ -21,11 +21,17 @@ jobs:
     - name: Run tests
       run: |
         if [ -d tests ]; then
-          pytest tests/
+          pytest tests/ --cov=. --cov-report=xml
         else
           echo "No tests directory found. Skipping tests."
         fi
-    # - name: Run Streamlit app
+      
+    # - name: Upload coverage report
+    #   uses: codecov/codecov-action@v3
+    #   with:
+    #     token: ${{ secrets.CODECOV_TOKEN }}
+    #     file: .coverage.xml
+    # - name: Test Streamlit app
     #   run: |
     #     streamlit run streamlit_app/app.py
     
